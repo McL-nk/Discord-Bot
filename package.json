@@ -1,0 +1,29 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/shard.js",
+  "scripts": {
+    "test": "node src/deploy-commands.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "canvas": "^2.11.0",
+    "chalk": "^4.1.2",
+    "chart.js": "^3.9.1",
+    "chartjs-node-canvas": "^4.1.6",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "moment": "^2.29.4",
+    "mongoose": "^6.9.2",
+    "ms-prettify": "^1.4.0",
+    "node-cron": "^3.0.2",
+    "prettier": "^3.0.0"
+  },
+  "prisma": {
+    "schema": "src/util/prisma/schema.prisma"
+  }
+}
