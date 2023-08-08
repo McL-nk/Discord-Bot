@@ -47,7 +47,7 @@ module.exports = {
                   .addFields([
                     {
                         name: "Host",
-                        value: "[Snakecraft](https://discord.gg/Fb2k6wx2)",
+                        value: "[Snakecraft](https://my.snakecrafthosting.com/aff.php?aff=2)",
                         inline: true
                     },
                     {
@@ -79,8 +79,8 @@ CPU:
 \u3000 Model: ${core.model}
 \u3000 Speed: ${core.speed}MHz
 Memory:
-\u3000 Total: ${(process.memoryUsage().heapTotal  / 1024 / 1024).toFixed(2)} MB / 2GB
-\u3000 Used: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB / 2GB\`\`\``)
+\u3000 Total: ${(process.memoryUsage().heapTotal  / 1024 / 1024).toFixed(2)} MB 
+\u3000 Used: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB \`\`\``)
                 
                   .setTimestamp()   
                   interaction.editReply({content: " ", embeds: [Embed420]})

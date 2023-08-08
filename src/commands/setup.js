@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 const { serverSchema, guildSchema, mongo } = require("../util");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("setup")
     .setDescription("Setup your discord with a MC server")
-
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption((option) =>
       option.setName("ip").setDescription("Your server IP").setRequired(true)
     )
@@ -28,6 +28,7 @@ module.exports = {
         let server = await serverSchema.findOne({
           ip: interaction.options.getString("ip"),
         });
+        let guild = await guildSchema.findById(interaction.guildId);
 
         if (!server) {
           const server2 = new serverSchema({
@@ -38,21 +39,23 @@ module.exports = {
           server2.save().then(async (server) => {
             await guildSchema.findByIdAndUpdate(
               interaction.guildId,
-              { $push: { servers: {_id: server._id, status_channels: [], status_channels_enabled: false } } },
-              { new: true, upsert: true }
+              { $set: { server: {id: server._id,version: interaction.options.getString("version"), status_channels: {}, status_channels_enabled: false } } },
+            { new: true, upsert: true }
             );
 
             interaction.reply({ content: "Server linked to guild." });
           });
         } else if (server) {
-          let guild = await guildSchema.findById(interaction.guildId);
-
-          if (guild.servers.find(e => e._id == server._id))
+      
+         // if (guild.servers.find(e => e._id == server._id))
+         //   return interaction.reply("Server is already linked to this guild!");
+     
+          if (guild && (guild.server.id == server._id))
             return interaction.reply("Server is already linked to this guild!");
 
           await guildSchema.findByIdAndUpdate(
             interaction.guildId,
-            { $push: { servers: {_id: server._id, status_channels: [], status_channels_enabled: false } } },
+            { $set: { server: {id: server._id,version: interaction.options.getString("version"), status_channels: {}, status_channels_enabled: false } } },
             { new: true, upsert: true }
           );
 

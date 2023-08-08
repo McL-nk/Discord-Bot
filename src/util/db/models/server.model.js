@@ -25,12 +25,13 @@ const falsereqBool = {
 
 
 const serverSchema = new Schema({
-    UUID: {type: String, required: false, default: ""},
-    primary_server: {type: String, required: false, default: ""},
     ip: reqString,
     version: reqString,
+    online: Boolean,
     uptime: [],
-    players_numbers: []
+    players_numbers: [],
+    max_players: Number,
+    online_players: Number
 })
 
 module.exports = mongoose.model("server", serverSchema)

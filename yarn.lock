@@ -1325,6 +1325,11 @@ mongodb@4.16.0:
     "@aws-sdk/credential-providers" "^3.186.0"
     saslprep "^1.0.3"
 
+mongoose-long@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/mongoose-long/-/mongoose-long-0.7.0.tgz#7d9d1d2a9dc8815608e7a45afcb8d6848555757f"
+  integrity sha512-WbGL/FWD54Y9lZLL7Ahx9KkBWuVHmFk7AZNqBfHDJ/mRLUbg919LFPtbjbZRmx3qFVbq6ko/PzsCr0Iy9m+0Ew==
+
 mongoose@^6.9.2:
   version "6.11.2"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.11.2.tgz#29b4933de3bcbbd5ebd5e3d979791d827f9d527e"

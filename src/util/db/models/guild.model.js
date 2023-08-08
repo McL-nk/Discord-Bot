@@ -1,6 +1,8 @@
 const { Schema }  = require("mongoose")
-const mongoose = require("mongoose")
 
+const mongoose = require("mongoose")
+require("mongoose-long")(mongoose)
+const{Types: {Long}} = mongoose
 const reqNum = {
     type: Number,
     required: true,
@@ -9,7 +11,8 @@ const reqNum = {
 
 const reqString = {
     type: String,
-    required: true
+    required: true,
+    default: " "
 }
 const reqBool = {
    type: Boolean,
@@ -26,7 +29,7 @@ const falsereqBool = {
 
 const userSchema = new Schema({
     _id: reqString,
-    servers: [{_id: {type:String, required: true}, status_channels: [], status_channels_enabled: false}],
+    server: {id: {type: String, required: true, default: " "}, status_channels: {players_online: {type: Long, required: true, default: 0}, server_online: {type: Long, required: true, default: 0}}},
     name: reqString,
     premium: 0
 })
